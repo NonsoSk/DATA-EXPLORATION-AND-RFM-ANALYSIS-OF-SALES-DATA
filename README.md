@@ -71,6 +71,7 @@ Which gave us the result:
 |Shipped|
 |Disputed|
 |In Process|
+
 That means there are 6 different statuses in the delivery service of products.
 
 - to see the time-frame of the dataset. 
@@ -85,6 +86,7 @@ SELECT DISTINCT YEAR_ID FROM [DBO].[SALES_DATA_SAMPLE] ORDER BY YEAR_ID ASC;
 |2003|
 |2004|
 |2005|
+
 Thus, sales were made from 2003 to 2005.
 
 - To see the products in the dataset, we used
