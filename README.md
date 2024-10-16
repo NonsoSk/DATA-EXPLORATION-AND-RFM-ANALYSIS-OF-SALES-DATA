@@ -125,7 +125,7 @@ SELECT COUNT (DISTINCT  CITY) CITY_PER_COUNTRY, COUNTRY  FROM [DBO].[SALES_DATA_
 - The query above shows that USA has the highest number of cities patronizing the company while Switzerland, Philippines, Singapore and Ireland
 - have just one cities where the company`s product is sold
 
---- Territory was another column we needed to be study well and so the know the territories our analysis would cover, we used:
+- Territory was another column we needed to be study well and so the know the territories our analysis would cover, we used:
 
 ```
 SELECT DISTINCT TERRITORY FROM [DBO].[SALES_DATA_SAMPLE];
@@ -137,7 +137,7 @@ SELECT DISTINCT TERRITORY FROM [DBO].[SALES_DATA_SAMPLE];
 |Japan|
 |NA|
 
-	The orders were delivered in different sizes and so it was important to know the different sizes. So, we used:
+The orders were delivered in different sizes and so it was important to know the different sizes. So, we used:
 ```
 SELECT DISTINCT DEALSIZE FROM [DBO].[SALES_DATA_SAMPLE];
 ```
@@ -146,18 +146,22 @@ SELECT DISTINCT DEALSIZE FROM [DBO].[SALES_DATA_SAMPLE];
 |Large|
 |Medium|
 |Small|
- Having understood to dataset, we proceeded to analyzing it.
 
-# Analysis and problem solving.
+Having understood to dataset, we proceeded to analyzing it.
+
+# Analysis and Problem Solving.
+
 I analyzed the data step by step according to the questions and aim of my analysis. 
 
 In the first analysis, we set out to answer the question:
+
 ** find out the product with the highest order and its corresponding revenue generated**
 ```
 SELECT PRODUCTLINE, SUM(SALES) AS REVENUE, COUNT(ORDERNUMBER) AS FREQUENCY FROM [DBO].[SALES_DATA_SAMPLE]
 GROUP BY PRODUCTLINE ORDER BY REVENUE DESC;
 ```
 The result of the above query shows that “Classic Cars” are the highest ordered products with 967 orders and generating a grand income of  3,919,615.6607666. 
+
 We can also notice that there is so much difference in revenue and orders of the “Classic Cars” and “Vintage Cars” which came as the second most ordered product with a total order of 607 and a total revenue of 1,903,150.83557129.
 This goes a long way to tell us that “Classic Cars” are in very high demands than all other products.
 From our query, we also discovered that the least demanded products are Trains which has only 77 orders out of 2,823 total orders made in the company and with a revenue of 226,243.468994141 which is quite a poor addition to the company`s revenue.
@@ -324,11 +328,11 @@ We can see that two customers : Euro Shopping Channel and La Rochelle Gifts, are
 In order of Recency, we can say they (Euro Shopping Channel and La Rochelle Gifts) are the most recent customers
 
 Still on the customer analysis, I went further to answer the following questions:
-	 Top three customers that generate the highest revenue for the company?
-	 Top three (3) customers with the highest orders
-	 Top 3 most active / Most recent customers
+- Top three customers that generate the highest revenue for the company?
+- Top three (3) customers with the highest orders
+- Top 3 most active / Most recent customers
 
-Top three customers that generate the highest revenue for the company
+**Top three customers that generate the highest revenue for the company**
 
 ```
 WITH RFM AS
@@ -355,7 +359,7 @@ We can see that the customers who have added more to the finance of the company 
 
 With this, we proceeded to the next question:
 
-Top three (3) customers with the highest orders
+**Top three (3) customers with the highest orders**
 
 ```
 WITH RFM AS
@@ -385,7 +389,7 @@ We can see from the above that Euro Shopping Channel has made the highest orders
 			
 My concern now was the next question:
 
-Top 7 most active / Most recent customers
+**Top 7 most active / Most recent customers**
 
 ```
 WITH RFM AS
@@ -422,15 +426,16 @@ Having found out some of our best customers, there was need to check the differe
 Find out how many customers have been lost and how many have been gained.
 
 For deeper analysis, I grouped the customers into 6 categories:
--- Lost (Lost customers)
--- Sleeping away, cannot lose ((Big spenders who haven’t purchased lately/ slipping away)
--- New Customers (Customers who have just began buying products)
--- Potential churners ( customers who are not consistent in their orders and who have stayed for quite some time without purchase)
--- Active (Customers who buy often & recently, but at low price points)
--- loyal (Customers who buy often and recently and add generate very high revenue)
+- Lost (Lost customers)
+- Sleeping away, cannot lose ((Big spenders who haven’t purchased lately/ slipping away)
+- New Customers (Customers who have just began buying products)
+- Potential churners ( customers who are not consistent in their orders and who have stayed for quite some time without purchase)
+- Active (Customers who buy often & recently, but at low price points)
+- loyal (Customers who buy often and recently and add generate very high revenue)
 
 
 WITH RFM AS
+
 	
 	(SELECT CUSTOMERNAME, SUM(SALES) MONEYTARYVALUE, AVG(SALES)AVGMONEYTARYVALUE, COUNT(ORDERNUMBER) FREQUENCY,
 		
@@ -518,12 +523,12 @@ After updating the table, I went further to use the aggregate function; count.
 		SELECT COUNT (CUSTOMER_STATUS) LOYAL FROM #REFPROJECT WHERE CUSTOMER_STATUS='LOYAL' 
 
 The result of our query shows that:
--- We lost 21 of our customers. A really large number that calls for concern
--- 18 of our big customers have not been frequent like before
--- We had an addition of only 8 new customers
--- 17 of our customers  are slipping off, that is, they are on the verge of leaving.
--- We still have 14 active customers and
--- 14 loyal customers.
+- We lost 21 of our customers. A really large number that calls for concern
+- 18 of our big customers have not been frequent like before
+- We had an addition of only 8 new customers
+- 17 of our customers  are slipping off, that is, they are on the verge of leaving.
+- We still have 14 active customers and
+- 14 loyal customers.
 
 This means that we have only 28 reliable customers out of the 92 in our record, which is really poor.
 
@@ -577,7 +582,7 @@ The result of our query is:
 |Los Angeles|48048.5|
 |Brisbane|50218.5|
 
-From the table above, we can see that the city “Dublin” isn`t even among the 5 cities with the least revenue generally despite being the worst city in Ireland which happens to be the country with the least revenue.
+From the table above, we can see that the city “Dublin” is not even among the 5 cities with the least revenue generally despite being the worst city in Ireland which happens to be the country with the least revenue.
 What this means is that, if the city Dublin which generates the least revenue in a country that has the least revenue record  is not among the least cities then the implication is that not much cities in Ireland are involved in the purchase of the company`s product.
 
 This led me to checking the number of cities in Ireland where I products are sold.
@@ -592,7 +597,7 @@ The result shows that Dublin is the only city in Ireland that buys from the comp
 
 The city that has the least revenue generally is “Charleroi”.  I went further to know the country where “Charleroi” is in.
 
--- which country is it located
+**which country is it located**
 
 ```
 SELECT  COUNTRY, CITY, SUM(SALES) REVENUE FROM [DBO].[SALES_DATA_SAMPLE] WHERE CITY='CHARLEROI'
@@ -602,7 +607,7 @@ GROUP BY COUNTRY, CITY ORDER BY REVENUE  ASC;
 Charleroi is in Belgium.
 
 
---which country has the highest number of sales
+**which country has the highest number of sales**
 
 ```
 SELECT  TOP 5 COUNTRY,  COUNT (DISTINCT  CITY) CITIES, 
@@ -623,7 +628,7 @@ GROUP BY COUNTRY ORDER BY REVENUE  DESC;
 For very obvious reasons (Involvement of more number of cities) USA has the highest sales.
 However, a very interesting point to note is the fact that Spain with only 3 countries generate more revenue than France with 9 cities.
 
---cities with the highest sales in the US
+**cities with the highest sales in the US**
 
 ```
 SELECT  TOP 5 CITY,  SUM(SALES) REVENUE FROM [DBO].[SALES_DATA_SAMPLE]
@@ -641,7 +646,7 @@ The result of our query is:
 	
 
 
-What are the top 5 best products in the US
+**What are the top 5 best products in the US**
 
 ```
 WITH TTP AS
@@ -671,7 +676,7 @@ Classic cars stands as the best product in the US.
 Take for example, US has 23 cities involved while Switzerland and a host of others have just one. 
 This can affect the provision of service to countries with less cities as more concentration will be on the countries with greater patronizing cities. I recommend then that the company opens customer care offices in the different countries to help attend to customer needs and blossom the involvement of other cities in the country.
 
--Considering that the products that are in high demands are Classic cars and Vintage cars, it is clear that the company`s product is  appreciated more by people of luxury. I recommend then that increases its production of quality classic cars and minimize the production of trains which has had only 77 orders.
+- Considering that the products that are in high demands are Classic cars and Vintage cars, it is clear that the product of the company is  appreciated more by people of luxury. I recommend then that increases its production of quality classic cars and minimize the production of trains which has had only 77 orders.
 The company`s primary products should be cars and so durability, quality and luxury should be considered.
 
 - I observed that the best month for sales is “November”, with classic cars being the most ordered product.
@@ -684,9 +689,7 @@ I recommend then that the company`s shipping service be optimized to serve more 
 Thus,  aside improving the quality of product delivery as well as the quality of products, I recommend that the company consider giving discounts to her customers according to their level of activeness and revenue generation. This would help encourage customers and improve customer-manager relationship. That is to say, customers should be given discount based on their  Frequency and monetary value.
 While customer service agents should take up the responsibility of developing personal relationships with customers to help know and encourage customers who have not visited in recent times.
 
--I observed that Ireland as a country generates the least revenue. Ireland has only one city as shown in the analysis.  However, If a single city can generate such revenue, then I recommend that  the expansion of the company  to many other cities particularly in Switzerland, Philippines, Singapore and Ireland
-
-In Belgium, the products are sold in only two cities, yet one of the cities “Charleroi” has the record of least revenue return. For a country with small number of involvement, focus should be on expanding and optimizing services since the involvement of only two cities and the poor return from there might suggest wrong market strategy and poor delivery.
+- I observed that Ireland as a country generates the least revenue. Ireland has only one city as shown in the analysis.  However, If a single city can generate such revenue, then I recommend that  the expansion of the company  to many other cities particularly in Switzerland, Philippines, Singapore and Ireland. In Belgium, the products are sold in only two cities, yet one of the cities “Charleroi” has the record of least revenue return. For a country with small number of involvement, focus should be on expanding and optimizing services since the involvement of only two cities and the poor return from there might suggest wrong market strategy and poor delivery.
 
 - I observed that the top 5 countries with the highest sales and revenue are USA, Spain France, Australia, UK in descending order. Spain has lesser countries than France, but generates more revenue. This means that there is a great potential of Spain being the highest generator of revenue for the company . I recommend special attention and expansion of other branches in other cities in Spain. 
 
