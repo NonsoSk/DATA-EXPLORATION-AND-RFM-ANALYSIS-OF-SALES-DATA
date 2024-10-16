@@ -382,10 +382,10 @@ This gave us the result:
 
 |CUSTOMERNAME|MONEYTARYVALUE|FREQUENCY|RECENCY|
 |------|-------------------|-------------|-------|
-
 |Euro Shopping Channel|912294|259|0|
 |Mini Gifts Distributors Ltd.|654858|180|2|
 |Australian Collectors, Co.|200995|55|183|
+
 We can see from the above that Euro Shopping Channel has made the highest orders. 
 			
 My concern now was the next question:
@@ -410,7 +410,6 @@ WITH RFM AS
 
 |CUSTOMERNAME|MONEYTARYVALUE|FREQUENCY|RECENCY|
 |------|-------------------|-------------|-------|
-
 |La Rochelle Gifts|180125|53|0|
 |Euro Shopping Channel|912294|259|0|
 |Diecast Classics Inc.|122138|31|1|
@@ -435,7 +434,7 @@ For deeper analysis, I grouped the customers into 6 categories:
 - loyal (Customers who buy often and recently and add generate very high revenue)
 
 
-
+```
 WITH RFM AS
 
 	
@@ -446,7 +445,8 @@ WITH RFM AS
 		DATEDIFF(DD, MAX(ORDERDATE), (SELECT MAX(ORDERDATE) FROM [DBO].[SALES_DATA_SAMPLE])) RECENCY
 
 		FROM [DBO].[SALES_DATA_SAMPLE] GROUP BY CUSTOMERNAME),
---
+```
+```
  RFM_CALC AS
 
 	(SELECT R.*,
@@ -466,7 +466,9 @@ SELECT C.*, RFM_RECENCY+ RFM_FREQUENCY+ RFM_MONETARY AS RFM_CELL,
 
 	SELECT * FROM #REFPROJECT;
 
+```
 
+```
 SELECT CUSTOMERNAME , RFM_RECENCY, RFM_FREQUENCY, RFM_MONETARY,
 
 	CAST(RFM_RECENCY AS VARCHAR) + CAST(RFM_FREQUENCY AS VARCHAR) + CAST(RFM_MONETARY  AS VARCHAR) RFM_CELL_STRING,
@@ -486,13 +488,15 @@ SELECT CUSTOMERNAME , RFM_RECENCY, RFM_FREQUENCY, RFM_MONETARY,
 
 		END RFM_SEGMENT FROM #REFPROJECT;
 
-
+```
 Having grouped the customers into different matching categories, we went further to count them:
 
-
+```
 ALTER TABLE #REFPROJECT ADD CUSTOMER_STATUS VARCHAR (100);
 SELECT * FROM #REFPROJECT
+```
 
+```
 UPDATE #REFPROJECT SET CUSTOMER_STATUS= 
 		
 	       CASE 
@@ -510,8 +514,10 @@ UPDATE #REFPROJECT SET CUSTOMER_STATUS=
 		WHEN RFM_CELL_STRING IN (433, 434, 443, 444)THEN  'LOYAL'
 
 		END;
+```
+
 After updating the table, I went further to use the aggregate function; count.
-		
+```		
 		SELECT COUNT (CUSTOMER_STATUS) LOST FROM #REFPROJECT WHERE CUSTOMER_STATUS='LOST CUSTOMERS' 
 		
 		SELECT COUNT (CUSTOMER_STATUS) SLIPPING FROM #REFPROJECT WHERE CUSTOMER_STATUS='SLIPPING AWAY, CANNOT LOSE' 
@@ -523,7 +529,7 @@ After updating the table, I went further to use the aggregate function; count.
 		SELECT COUNT (CUSTOMER_STATUS)ACTIVE FROM #REFPROJECT WHERE CUSTOMER_STATUS='ACTIVE' 
 		
 		SELECT COUNT (CUSTOMER_STATUS) LOYAL FROM #REFPROJECT WHERE CUSTOMER_STATUS='LOYAL' 
-
+```
 The result of our query shows that:
 - We lost 21 of our customers. A really large number that calls for concern
 - 18 of our big customers have not been frequent like before
