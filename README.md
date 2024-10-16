@@ -46,3 +46,74 @@ I obtained the data by downloading the csv file from Kaggle. The dataset “Sale
 CREATE DATABASE PROJECT_ONE;
 ```
 
+The data is a sample data of a public available datasets on sales, which just one table, 25 columns and 2,823 rows.
+To view this dataset use:
+```
+SELECT * FROM [DBO].[SALES_DATA_SAMPLE];
+```
+# Data Transformation and cleaning
+
+The dataset I worked with was a clean dataset as the essence of this project was just data exploration and nothing more. I used an already cleaned dataset and so there was no need for further cleaning.
+However, for a better knowledge of the data I was working with, I went further to check for unique values.
+## Checking Unique Values
+
+-- To see the different Status of orders, we used:
+
+```
+SELECT DISTINCT STATUS FROM [DBO].[SALES_DATA_SAMPLE]; 
+```
+Which gave us the result:
+|STATUS|
+|------|
+|Resolved|
+|On Hold|
+|Canceled|
+|Shipped|
+|Disputed|
+|In Process|
+That means there are 6 different statuses in the delivery service of products.
+
+-- to see the time-frame of the dataset. 
+
+
+```
+SELECT DISTINCT YEAR_ID FROM [DBO].[SALES_DATA_SAMPLE] ORDER BY YEAR_ID ASC;
+```
+
+|YEAR_ID|
+|------|
+|2003|
+|2004|
+|2005|
+Thus, sales were made from 2003 to 2005.
+
+-- To see the products in the dataset, we used
+```
+SELECT DISTINCT PRODUCTLINE FROM [DBO].[SALES_DATA_SAMPLE];
+```
+|PRODUCTLINE|
+|------|
+|Trains|
+|Motorcycles|
+|Ships|
+|Trucks and Buses|
+|Vintage cars|
+|Classic Cars|
+|Plains|
+From the above, we can see that there are 7 different products which we shall be working with.
+-- To see the different countries in the dataset, we used the syntax:
+```
+SELECT DISTINCT COUNTRY FROM [DBO].[SALES_DATA_SAMPLE];
+``` 
+We counted them
+
+```
+SELECT COUNT (DISTINCT COUNTRY) FROM [DBO].[SALES_DATA_SAMPLE];
+```
+To find out that there are 19 countries all together.
+
+-- To check the cities per country where the company`s product are sold.
+
+```
+SELECT COUNT (DISTINCT  CITY) CITY_PER_COUNTRY, COUNTRY  FROM [DBO].[SALES_DATA_SAMPLE] GROUP BY COUNTRY ORDER BY CITY_PER_COUNTRY DESC;
+```
