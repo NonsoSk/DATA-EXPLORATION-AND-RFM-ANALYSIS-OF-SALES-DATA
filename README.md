@@ -13,9 +13,9 @@ By analyzing the datasets related to deforestation, income groups, and regional 
 3)	What deal size generates the highest revenue?
 4)	What is the best moth for sales in each of the year and what month generally recorded the highest sales?
 5)	Find who the best customers are.
-   1) Top three customers that generate the highest revenue for the company?
-   2) Top three (3) customers with the highest orders
-   3) Top 3 most active / Most recent customers
+ - Top three customers that generate the highest revenue for the company
+ - Top three (3) customers with the highest orders
+ - Top 3 most active / Most recent customers
 6)	Find out how many customers have been lost and how many have been gained.
 7)	What countries generate the least revenue?
 8)	What countries generate the least revenue?
