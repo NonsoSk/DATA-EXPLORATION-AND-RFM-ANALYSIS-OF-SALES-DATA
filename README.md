@@ -57,7 +57,7 @@ The dataset I worked with was a clean dataset as the essence of this project was
 However, for a better knowledge of the data I was working with, I went further to check for unique values.
 ## Checking Unique Values
 
--- To see the different Status of orders, we used:
+- To see the different Status of orders, we used:
 
 ```
 SELECT DISTINCT STATUS FROM [DBO].[SALES_DATA_SAMPLE]; 
@@ -73,7 +73,7 @@ Which gave us the result:
 |In Process|
 That means there are 6 different statuses in the delivery service of products.
 
--- to see the time-frame of the dataset. 
+- to see the time-frame of the dataset. 
 
 
 ```
@@ -87,7 +87,7 @@ SELECT DISTINCT YEAR_ID FROM [DBO].[SALES_DATA_SAMPLE] ORDER BY YEAR_ID ASC;
 |2005|
 Thus, sales were made from 2003 to 2005.
 
--- To see the products in the dataset, we used
+- To see the products in the dataset, we used
 ```
 SELECT DISTINCT PRODUCTLINE FROM [DBO].[SALES_DATA_SAMPLE];
 ```
@@ -100,8 +100,9 @@ SELECT DISTINCT PRODUCTLINE FROM [DBO].[SALES_DATA_SAMPLE];
 |Vintage cars|
 |Classic Cars|
 |Plains|
+
 From the above, we can see that there are 7 different products which we shall be working with.
--- To see the different countries in the dataset, we used the syntax:
+- To see the different countries in the dataset, we used the syntax:
 ```
 SELECT DISTINCT COUNTRY FROM [DBO].[SALES_DATA_SAMPLE];
 ``` 
