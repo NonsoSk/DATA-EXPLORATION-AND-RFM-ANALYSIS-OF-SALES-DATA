@@ -37,3 +37,12 @@ The result of our analysis could provide valuable insights for policymakers, bus
 - String functions
 - Subquery and CTE
 - Window functions (over, rank,)
+
+
+# Data sourcing
+
+I obtained the data by downloading the csv file from Kaggle. The dataset “Sales_data_sample” was downloaded and imported into my database “PROJECT”, which I created using the syntax below:
+```
+CREATE DATABASE PROJECT_ONE;
+```
+
