@@ -351,11 +351,12 @@ WITH RFM AS
 
 We can see that the customers who have added more to the finance of the company are:  Euro Shopping Channel, Mini Gifts Distributors Ltd. And Australian Collectors, Co. As can be seen 
 
+
 |CUSTOMERNAME|MONEYTARYVALUE|FREQUENCY|RECENCY|
 |------|-------------------|-------------|-------|
 |Euro Shopping Channel|912294|259|0|
-|Mini Gifts Distributors Ltd.|654858|180|2|
-|Australian Collectors, Co.|200995|55|183 |
+|Mini Gifts Distributors Ltd|654858|180|2|
+|Australian Collectors, Co|200995|55|183|
 
 With this, we proceeded to the next question:
 
@@ -382,9 +383,9 @@ This gave us the result:
 |CUSTOMERNAME|MONEYTARYVALUE|FREQUENCY|RECENCY|
 |------|-------------------|-------------|-------|
 
-|Euro Shopping Channel|	912294|	259|	0|
-|Mini Gifts Distributors Ltd.|	654858|	180|	2|
-|Australian Collectors, Co.|	200995|	55|	183|
+|Euro Shopping Channel|912294|259|0|
+|Mini Gifts Distributors Ltd.|654858|180|2|
+|Australian Collectors, Co.|200995|55|183|
 We can see from the above that Euro Shopping Channel has made the highest orders. 
 			
 My concern now was the next question:
@@ -432,6 +433,7 @@ For deeper analysis, I grouped the customers into 6 categories:
 - Potential churners ( customers who are not consistent in their orders and who have stayed for quite some time without purchase)
 - Active (Customers who buy often & recently, but at low price points)
 - loyal (Customers who buy often and recently and add generate very high revenue)
+
 
 
 WITH RFM AS
