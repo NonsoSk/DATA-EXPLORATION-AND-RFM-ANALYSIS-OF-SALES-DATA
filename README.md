@@ -5,8 +5,7 @@
 This is an SQL portfolio project with the primary aim of data exploration. It explores the dataset to find out the best customers and best products through making an RFM Analysis. 
 
 # Introduction
-By analyzing sales dataset, we will answer the following questions:
-By analyzing the datasets related to deforestation, income groups, and regional information of countries and areas, we will answer the following questions:
+By analyzing the sales dataset, we will answer the following questions:
 
 1) find out the product with the highest order and its corresponding revenue generated
 2)	Which year had the most sales?
